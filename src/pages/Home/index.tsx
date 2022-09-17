@@ -11,6 +11,7 @@ import {
 } from './styles'
 
 export function Home() {
+  console.log('just loging')
   return (
     <HomeContainer>
       <form action="">
