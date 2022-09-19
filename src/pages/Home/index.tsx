@@ -32,12 +32,19 @@ const newCycleFormValidationsSchema = zod.object({
     .max(60, 'O ciclo precisa ser de no máximo 60 mínutos'),
 })
 
+// com isso recupero a tipagem sem criar uma interface
+type NewCycleFormData = zod.infer<typeof newCycleFormValidationsSchema>
+
 export function Home() {
-  const { register, handleSubmit, watch } = useForm({
+  const { register, handleSubmit, watch } = useForm<NewCycleFormData>({
     resolver: zodResolver(newCycleFormValidationsSchema),
+    defaultValues: {
+      task: '',
+      minutesAmount: 0,
+    },
   })
 
-  const handleCreateNewCycle = (data: any) => {
+  const handleCreateNewCycle = (data: NewCycleFormData) => {
     console.log(data)
   }
 
