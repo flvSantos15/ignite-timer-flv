@@ -1,5 +1,6 @@
 import { HandPalm, Play } from 'phosphor-react'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { useCycles } from '../../context/useCountdown'
 
 import { Countdown } from './components/Countdown'
 import { NewCycleForm } from './components/NewCycleForm'
@@ -29,6 +30,8 @@ interface Cycle {
 }
 
 export function Home() {
+  const { getCycles, getActiveCycleId } = useCycles()
+
   const [cycles, setCycles] = useState<Cycle[]>([])
   const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
 
@@ -45,11 +48,13 @@ export function Home() {
       startDate: new Date(),
     }
 
-    setCycles((state) => [...state, newCycle])
-    setActiveCycleId(id)
-    setAmountSecondsPassed(0)
+    getCycles(newCycle)
+    // setCycles((state) => [...state, newCycle])
+    // setActiveCycleId(id)
+    getActiveCycleId(id)
+    // setAmountSecondsPassed(0)
 
-    reset()
+    // reset()
   }
 
   function handleInterruptCycle() {
@@ -65,23 +70,6 @@ export function Home() {
 
     setActiveCycleId(null)
   }
-
-  // total de segundos atuais
-  const currentSeconds = activeCycle ? totalSeconds - amountSecondsPassed : 0
-
-  // pego os segundos atuais e separo por minutos
-  const minutesAmount = Math.floor(currentSeconds / 60)
-  // o restande vira segundos
-  const secondsAmount = currentSeconds % 60
-
-  const minutes = String(minutesAmount).padStart(2, '0')
-  const seconds = String(secondsAmount).padStart(2, '0')
-
-  useEffect(() => {
-    if (activeCycle) {
-      document.title = `${minutes}:${seconds}`
-    }
-  }, [minutes, seconds, activeCycle])
 
   // uso o watch pra verificar se task foi alterado
   const task = watch('task')
