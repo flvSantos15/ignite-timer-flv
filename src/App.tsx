@@ -9,13 +9,13 @@ import { defaultTheme } from './styles/themes/default'
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <CyclesProvider>
-        <BrowserRouter>
+      <BrowserRouter>
+        <CyclesProvider>
           <Router />
-        </BrowserRouter>
+        </CyclesProvider>
+      </BrowserRouter>
 
-        <GlobalStyle />
-      </CyclesProvider>
+      <GlobalStyle />
     </ThemeProvider>
   )
 }
