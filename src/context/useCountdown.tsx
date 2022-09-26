@@ -12,9 +12,12 @@ interface Cycle {
 interface CyclesContextData {
   activeCycle: Cycle | undefined
   activeCycleId: string | null
-  getCycles: (cycle: Cycle) => void
-  getActiveCycleId: (id: string) => void
+  amountSecondsPassed: number
+  getCycle: (cycle: Cycle) => void
+  getCycles: (cycle: Cycle[]) => void
+  getActiveCycleId: (id: string | null) => void
   markCycleAsFinishedAsFinished: () => void
+  getAmountSecondsPassed: (seconds: number) => void
 }
 
 interface CyclesProviderData {
@@ -24,17 +27,29 @@ interface CyclesProviderData {
 export const CyclesContext = createContext({} as CyclesContextData)
 
 export const CyclesProvider = ({ children }: CyclesProviderData) => {
+  // const [cycle, setCycle] = useState<Cycle>()
   const [cycles, setCycles] = useState<Cycle[]>([])
   const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
+  const [amountSecondsPassed, setAmountSecondsPassed] = useState(0)
 
   const activeCycle = cycles.find((cycles) => cycles.id === activeCycleId)
 
-  const getCycles = (cycle: Cycle) => {
+  const getCycle = (cycle: Cycle) => {
+    // setCycle(cycle)
     setCycles((state) => [...state, cycle])
   }
 
-  const getActiveCycleId = (id: string) => {
+  const getCycles = (cycle: Cycle[]) => {
+    setCycles(cycles)
+    // setCycles((state) => [...state, cycle])
+  }
+
+  const getActiveCycleId = (id: string | null) => {
     setActiveCycleId(id)
+  }
+
+  const getAmountSecondsPassed = (seconds: number) => {
+    setAmountSecondsPassed(seconds)
   }
 
   const markCycleAsFinishedAsFinished = () => {
@@ -54,9 +69,12 @@ export const CyclesProvider = ({ children }: CyclesProviderData) => {
       value={{
         activeCycle,
         activeCycleId,
+        getCycle,
         getCycles,
         getActiveCycleId,
         markCycleAsFinishedAsFinished,
+        amountSecondsPassed,
+        getAmountSecondsPassed,
       }}
     >
       <>{children}</>

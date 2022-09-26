@@ -2,14 +2,30 @@ import { HandPalm, Play } from 'phosphor-react'
 import { useState } from 'react'
 import { useCycles } from '../../context/useCountdown'
 
+import { zodResolver } from '@hookform/resolvers/zod'
+import { FormProvider, useForm } from 'react-hook-form'
+import * as zod from 'zod'
+
 import { Countdown } from './components/Countdown'
 import { NewCycleForm } from './components/NewCycleForm'
 
 import {
   HomeContainer,
   StartCountDownButton,
+  // eslint-disable-next-line prettier/prettier
   StopCountDownButton
 } from './styles'
+
+const newCycleFormValidationsSchema = zod.object({
+  task: zod.string().min(1, 'Informe a tarefa'),
+  minutesAmount: zod
+    .number()
+    .min(1, 'O ciclo precisa ser de no mínimo 5 mínutos')
+    .max(60, 'O ciclo precisa ser de no máximo 60 mínutos'),
+})
+
+// com isso recupero a tipagem sem criar uma interface
+type NewCycleFormData = zod.infer<typeof newCycleFormValidationsSchema>
 
 /**
  * function register(name: string) {
@@ -30,13 +46,26 @@ interface Cycle {
 }
 
 export function Home() {
-  const { getCycles, getActiveCycleId } = useCycles()
+  const {
+    getCycles,
+    getCycle,
+    getActiveCycleId,
+    activeCycleId,
+    activeCycle,
+    getAmountSecondsPassed,
+  } = useCycles()
 
   const [cycles, setCycles] = useState<Cycle[]>([])
-  const [activeCycleId, setActiveCycleId] = useState<string | null>(null)
 
-  // pego o ciclo  que esta ativo no momento
-  const activeCycle = cycles.find((item) => item.id === activeCycleId)
+  const newCycleForm = useForm<NewCycleFormData>({
+    resolver: zodResolver(newCycleFormValidationsSchema),
+    defaultValues: {
+      task: '',
+      minutesAmount: 0,
+    },
+  })
+
+  const { reset, watch, handleSubmit } = newCycleForm
 
   function handleCreateNewCycle(data: NewCycleFormData) {
     const id = String(new Date().getTime())
@@ -48,13 +77,11 @@ export function Home() {
       startDate: new Date(),
     }
 
-    getCycles(newCycle)
-    // setCycles((state) => [...state, newCycle])
-    // setActiveCycleId(id)
+    getCycle(newCycle)
     getActiveCycleId(id)
-    // setAmountSecondsPassed(0)
+    getAmountSecondsPassed(0)
 
-    // reset()
+    reset()
   }
 
   function handleInterruptCycle() {
@@ -68,7 +95,9 @@ export function Home() {
       }),
     )
 
-    setActiveCycleId(null)
+    getCycles(cycles)
+
+    getActiveCycleId(null)
   }
 
   // uso o watch pra verificar se task foi alterado
@@ -78,8 +107,11 @@ export function Home() {
   return (
     <HomeContainer>
       <form onSubmit={handleSubmit(handleCreateNewCycle)} action="">
-        <NewCycleForm />
-        <Countdown activeCycle={activeCycle} setCycles={setCycles} />
+        <FormProvider {...newCycleForm}>
+          <NewCycleForm />
+        </FormProvider>
+
+        <Countdown />
 
         {activeCycle ? (
           <StopCountDownButton onClick={handleInterruptCycle} type="button">
