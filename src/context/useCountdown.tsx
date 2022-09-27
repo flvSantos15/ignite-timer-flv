@@ -6,7 +6,13 @@ import {
   // eslint-disable-next-line prettier/prettier
   useState
 } from 'react'
-import { ActionTypes, Cycle, cyclesReducer } from '../reducers/cycles'
+import {
+  addNewCycleAction,
+  interruptCurrentCycleAction,
+  // eslint-disable-next-line prettier/prettier
+  markCurrentCycleAsFinishedAction
+} from '../reducers/cycles/actions'
+import { Cycle, cyclesReducer } from '../reducers/cycles/reducer'
 
 interface createCycleData {
   task: string
@@ -43,12 +49,7 @@ export const CyclesProvider = ({ children }: CyclesProviderData) => {
   const activeCycle = cycles.find((cycles) => cycles.id === activeCycleId)
 
   const markCycleAsFinishedAsFinished = () => {
-    dispatch({
-      type: ActionTypes.MARK_CURRENT_CYCLE_AS_FINISHED,
-      payload: {
-        data: activeCycleId,
-      },
-    })
+    dispatch(markCurrentCycleAsFinishedAction())
   }
 
   const getAmountSecondsPassed = (seconds: number) => {
@@ -65,23 +66,13 @@ export const CyclesProvider = ({ children }: CyclesProviderData) => {
       startDate: new Date(),
     }
 
-    dispatch({
-      type: ActionTypes.ADD_NEW_CYCLE,
-      payload: {
-        newCycle,
-      },
-    })
+    dispatch(addNewCycleAction(newCycle))
 
     setAmountSecondsPassed(0)
   }
 
   const interruptCurrentCycle = () => {
-    dispatch({
-      type: ActionTypes.INTERRUPT_CURRENT_CYCLE,
-      payload: {
-        activeCycleId,
-      },
-    })
+    dispatch(interruptCurrentCycleAction())
   }
 
   return (
