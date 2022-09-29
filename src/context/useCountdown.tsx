@@ -50,15 +50,20 @@ export const CyclesProvider = ({ children }: CyclesProviderData) => {
         '@ignite-timer:cycles-state-1.0.0',
       )
 
-      if (storedStateAsJSON) {
+      if (storedStateAsJSON && storedStateAsJSON != null) {
         return JSON.parse(storedStateAsJSON)
+      } else {
+        return {
+          cycles: [],
+          activeCycleId: null,
+        }
       }
     },
   )
 
   const { cycles, activeCycleId } = cyclesState
 
-  const activeCycle = cycles.find((cycles) => cycles.id === activeCycleId)
+  const activeCycle = cycles?.find((cycles) => cycles?.id === activeCycleId)
 
   const [amountSecondsPassed, setAmountSecondsPassed] = useState(() => {
     // esse foi um exemplo de otimização

@@ -12,6 +12,7 @@ export function NewCycleForm() {
       <label htmlFor="task">Vou trabalhar em</label>
       <TaskInput
         id="task"
+        data-cy="task"
         type="text"
         placeholder="Dê um nome para o seu projeto"
         list="task-suggestions"
@@ -29,6 +30,7 @@ export function NewCycleForm() {
       <MinutesAmountInput
         type="number"
         id="minutesAmount"
+        data-cy="minutesAmount"
         placeholder="00"
         step={5}
         min={1}

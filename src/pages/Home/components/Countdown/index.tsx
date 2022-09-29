@@ -28,7 +28,8 @@ export function Countdown() {
   const seconds = String(secondsAmount).padStart(2, '0')
 
   useEffect(() => {
-    let interval: number
+    // eslint-disable-next-line no-undef
+    let interval: NodeJS.Timeout
 
     if (activeCycle) {
       interval = setInterval(() => {

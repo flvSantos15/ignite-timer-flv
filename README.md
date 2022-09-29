@@ -46,6 +46,7 @@
 
 <div id='features'>
   <h2>Features</h2>
+  
     - [x] Inicia/Abandona ciclo de exercicio
     - [ ] Persiste informaçoes através de localStorage
     - [] Dark Mode
