@@ -1,5 +1,8 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable no-undef */
 /// <reference types="cypress" />
+
+import { should } from "chai"
 
 describe('empty spec', () => {
   const task = '[data-cy=task]'
@@ -7,26 +10,29 @@ describe('empty spec', () => {
 
   it('Visit the local host', () => {
     cy.visit('/')
+  })
 
-    // Given user visits the main page
-    // When they type a task and a timer amount
-    // Then the button should be clicable
+  it('should not be able to start the countdown if the text and number input is empty', () => {
     cy.get(task).should('not.have.text')
     cy.get(minutesAmount).should('not.have.text')
 
-    cy.get(task).type('Fazer café')
+    cy.contains('button', 'Começar').should('be.disabled')
+  })
+
+  it('should be able to type a text and time and start the countdown', () => {
+    cy.get(task).type('Fazer café') // digo pra digitar
     cy.get(minutesAmount).type('1')
 
-    cy.contains('button', 'Começar').click()
+    cy.contains('button', 'Começar').should('not.be.disabled').click() // digo pra clicar no button
 
     cy.contains('button', 'Interromper')
   })
 
-  // it('Visit the history page', () => {
-  //   cy.visit('http://localhost:5173/history')
+  it('Visit the history page', () => {
+    cy.visit('http://localhost:5173/history')
 
-  //   cy.contains('h1', 'Meu histórico')
-  // })
+    cy.contains('h1', 'Meu histórico')
+  })
 })
 
 // Given a user visits https://example.cypress.io
