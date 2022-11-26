@@ -3,17 +3,19 @@ import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import ptBR from 'date-fns/locale/pt-BR'
 
 import { useCycles } from '../../context/useCountdown'
+import { useThemeConfig } from '../../context/useTheme'
 
 import { HistoryContainer, HistoryList, Status } from './styles'
 
 export function History() {
   const { cycles } = useCycles()
+  const { themeConfig } = useThemeConfig()
 
   return (
-    <HistoryContainer>
+    <HistoryContainer defaultTheme={themeConfig}>
       <h1>Meu histórico</h1>
 
-      <HistoryList>
+      <HistoryList defaultTheme={themeConfig}>
         <table>
           <thead>
             <tr>
@@ -34,7 +36,7 @@ export function History() {
                       <td>
                         {formatDistanceToNow(new Date(cycle.startDate), {
                           addSuffix: true,
-                          locale: ptBR,
+                          locale: ptBR
                         })}
                       </td>
                       <td>
