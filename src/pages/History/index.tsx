@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import formatDistanceToNow from 'date-fns/formatDistanceToNow'
 import ptBR from 'date-fns/locale/pt-BR'
 
@@ -10,7 +11,7 @@ export function History() {
 
   return (
     <HistoryContainer>
-      <h1>Meu históricos</h1>
+      <h1>Meu histórico</h1>
 
       <HistoryList>
         <table>
