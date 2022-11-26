@@ -1,6 +1,10 @@
 import { createGlobalStyle } from 'styled-components'
 
-export const GlobalStyle = createGlobalStyle`
+interface IGlobalStyle {
+  defaultTheme: 'light' | 'dark'
+}
+
+export const GlobalStyle = createGlobalStyle<IGlobalStyle>`
   * {
     margin: 0;
     padding: 0;
@@ -13,8 +17,14 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: ${(props) => props.theme['gray-900']};
-    color: ${(props) => props.theme['gray-300']};
+    background: ${(props) =>
+      props.defaultTheme === 'dark'
+        ? props.theme['gray-900']
+        : props.theme['gray-300']};
+    color: ${(props) =>
+      props.defaultTheme === 'dark'
+        ? props.theme['gray-300']
+        : props.theme['gray-800']};
   }
 
   body, input, textarea, button {

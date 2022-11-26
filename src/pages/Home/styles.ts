@@ -9,6 +9,8 @@ export const HomeContainer = styled.main`
   align-items: center;
   justify-items: center;
 
+  border: 1px solid yellow;
+
   form {
     display: flex;
     flex-direction: column;
