@@ -20,10 +20,10 @@ export const GlobalStyle = createGlobalStyle<IGlobalStyle>`
     background: ${(props) =>
       props.defaultTheme === 'dark'
         ? props.theme['gray-900']
-        : props.theme['gray-300']};
+        : props.theme['gray-100']};
     color: ${(props) =>
       props.defaultTheme === 'dark'
-        ? props.theme['gray-300']
+        ? props.theme['gray-100']
         : props.theme['gray-800']};
   }
 

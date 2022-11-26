@@ -1,11 +1,13 @@
 import styled from 'styled-components'
 
-export const HeaderContainer = styled.header`
+interface IHeaderContainerProps {
+  defaultTheme: 'light' | 'dark'
+}
+
+export const HeaderContainer = styled.header<IHeaderContainerProps>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
-  border: 1px solid green;
 
   div.header {
     display: flex;
@@ -42,7 +44,10 @@ export const HeaderContainer = styled.header`
         justify-content: center;
         align-items: center;
 
-        color: ${(props) => props.theme['gray-100']};
+        color: ${(props) =>
+          props.defaultTheme === 'dark'
+            ? props.theme['gray-100']
+            : props.theme['gray-600']};
 
         border-top: 3px solid transparent;
         border-bottom: 3px solid transparent;

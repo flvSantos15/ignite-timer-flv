@@ -3,13 +3,17 @@ import { HeaderContainer } from './styles'
 import { Scroll, Timer, Sun } from 'phosphor-react'
 import { NavLink } from 'react-router-dom'
 import logoHeader from '../../assets/logo-ignite.svg'
+import { useThemeConfig } from '../../context/useTheme'
 
 export function Header() {
+  const { themeConfig, setThemeConfig } = useThemeConfig()
+
   const tooglerTheme = () => {
-    alert('dark')
+    themeConfig === 'light' ? setThemeConfig('dark') : setThemeConfig('light')
   }
+
   return (
-    <HeaderContainer id="header">
+    <HeaderContainer id="header" defaultTheme={themeConfig}>
       <img src={logoHeader} alt="Dois triângulos entrelaçados" />
 
       <div className="header">
