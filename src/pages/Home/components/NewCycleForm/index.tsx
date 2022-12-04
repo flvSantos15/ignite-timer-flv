@@ -29,22 +29,24 @@ export function NewCycleForm() {
         <option value="Projeto 3" />
       </datalist>
 
-      <label htmlFor="minutesAmount">durante</label>
-      <MinutesAmountInput
-        type="number"
-        id="minutesAmount"
-        data-cy="minutesAmount"
-        placeholder="00"
-        step={5}
-        min={1}
-        max={60}
-        disabled={!!activeCycle}
-        {...register('minutesAmount', {
-          valueAsNumber: true
-        })}
-      />
+      <div>
+        <label htmlFor="minutesAmount">durante</label>
+        <MinutesAmountInput
+          type="number"
+          id="minutesAmount"
+          data-cy="minutesAmount"
+          placeholder="00"
+          step={5}
+          min={1}
+          max={60}
+          disabled={!!activeCycle}
+          {...register('minutesAmount', {
+            valueAsNumber: true
+          })}
+        />
 
-      <span>minutos.</span>
+        <span>minutos.</span>
+      </div>
     </FormContainer>
   )
 }
