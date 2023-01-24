@@ -2,8 +2,6 @@
 /* eslint-disable no-undef */
 /// <reference types="cypress" />
 
-import { should } from "chai"
-
 describe('empty spec', () => {
   const task = '[data-cy=task]'
   const minutesAmount = '[data-cy=minutesAmount]'
