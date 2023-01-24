@@ -1,8 +1,9 @@
+/* eslint-disable prettier/prettier */
 import styled from 'styled-components'
 
 export const HomeContainer = styled.main`
   /* height: 100%; */
-  flex: 1;
+  /* flex: 1; */
 
   display: flex;
   flex-direction: column;
@@ -38,7 +39,12 @@ export const BaseCountDownButton = styled.button`
     opacity: 0.7;
     cursor: not-allowed;
   }
+
+  @media (max-width: 700px) {
+    width: 100%;
+  }
 `
+
 export const StartCountDownButton = styled(BaseCountDownButton)`
   background: ${(props) => props.theme['green-500']};
 

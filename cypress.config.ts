@@ -1,13 +1,15 @@
+/* eslint-disable prettier/prettier */
 import { defineConfig } from 'cypress'
 
 export default defineConfig({
-  projectId: 'y6fsvy',
+  // projectId: 'y6fsvy',
+  projectId: 'qc5d7z',
 
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
     },
-    baseUrl: 'http://localhost:5173',
+    baseUrl: 'http://localhost:5173'
   },
 
   component: {
@@ -16,7 +18,7 @@ export default defineConfig({
     // specPattern: 'src/**/*.cy.{js,jsx,ts,tsx}',
     devServer: {
       framework: 'react',
-      bundler: 'vite',
-    },
-  },
+      bundler: 'vite'
+    }
+  }
 })

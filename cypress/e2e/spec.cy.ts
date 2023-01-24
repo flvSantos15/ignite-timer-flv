@@ -10,15 +10,6 @@ describe('empty spec', () => {
     cy.visit('/')
   })
 
-<<<<<<< HEAD
-    cy.get('#header').click()
-
-    // cy.get(task).should('not.have.text')
-    // cy.get(minutesAmount).should('not.have.text')
-
-    // cy.get(task).type('Fazer café')
-    // cy.get(minutesAmount).type('1')
-=======
   it('should not be able to start the countdown if the text and number input is empty', () => {
     cy.get(task).should('not.have.text')
     cy.get(minutesAmount).should('not.have.text')
@@ -31,7 +22,6 @@ describe('empty spec', () => {
     cy.get(minutesAmount).type('1')
 
     cy.contains('button', 'Começar').should('not.be.disabled').click() // digo pra clicar no button
->>>>>>> b4c760ca2e1fab087caee6af83ca47d726b6f6c9
 
     // cy.contains('button', 'Começar').click()
 

@@ -20,20 +20,17 @@
 
 # Tabela de conteúdos
 
-<!--ts-->
-
-- [About](#about)
 - [Final application](#application)
-  - [Requirements](#requirements)
+- [Features](#features)
 - [Tecnologies](#technologies)
-<!--te-->
 
 ## Getting Started
 
 <div id='technologies'>
   <h2>This application is being built using the following technologies:</h2>
   
-  - [React](https://pt-br.reactjs.org/)
+  - [ReactJS](https://pt-br.reactjs.org/)
+  - [ViteJS](https://vitejs.dev/)
   - [TypeScript](https://www.typescriptlang.org/)
   - [Styled-Components](https://styled-components.com/)
   - [Phosphor-icons](https://phosphoricons.com/)
@@ -43,19 +40,21 @@
 <div id='features'>
   <h2>Features</h2>
   
-    - [x] Inicia/Abandona ciclo de exercicio
-    - [x] Persiste informaçoes através de localStorage
+    - [x] Start/Stop Exercice cycle
+    - [x] Keep informations in localStorage
     - [x] Dark/Light Mode
+    - [x] Accessibility
 </div>
 
 <div id='aprendizados'>
-  <h2>Aprendizados</h2>
-  
-    - light e dark mode com styled-components
-    - persistir informaçoes no localStorage
-    - utlizar o hook useReducer
-    - criar um contexto para compartilhar informações pela aplicação
-    - testes E2E com cypress
+  <h2>Motivation</h2>
+    <p>I created this application to apply some new knowledges and tecnologies.</p>
+
+    - light and dark mode with Styled-Components.
+    - Use useReducer Hook.
+    - Share informations through the application with Context API.
+    - Tests E2E with Cypress.
+
 </div>
 
 <div id='application'>

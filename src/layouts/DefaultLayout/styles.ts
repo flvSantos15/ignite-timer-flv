@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import styled from 'styled-components'
 
 interface ILayoutContainer {
@@ -18,4 +19,9 @@ export const LayoutContainer = styled.div<ILayoutContainer>`
 
   display: flex;
   flex-direction: column;
+
+  @media (max-width: 700px) {
+    width: 94%;
+    padding: 0.5rem;
+  }
 `

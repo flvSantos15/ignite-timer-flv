@@ -30,9 +30,10 @@ export const CountdownContainer = styled.div<ICountdownContainer>`
     padding: 10px 0;
     font-size: 6rem;
     line-height: 4rem;
+    gap: 0.5rem;
 
     span {
-      padding: 1.5rem 1rem;
+      padding: 1.5rem 0.25rem;
       border-radius: 5px;
     }
   }
