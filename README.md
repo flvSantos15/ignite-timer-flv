@@ -7,17 +7,15 @@
   <h5 align="left">
 	  🚀 Ignite Timer is an countdown application.
   </h5>
-  <!-- <h5 align="left">
-	  The application was developed during a week event of ReactJS development, 
-    the functionallities were get to know about Context API, NextJS and Componentization.
-  </h5> -->
-  <!-- <h5 align="left">
+  <h5 align="left">
+	  This application was developed by watching Rocketseat Bootcamp.
+  </h5>
+  <h5 align="left">
 	  As a developer I can never stop learning, I added some new functionallities to take
     the application to the next level, 
     the functionallities are Dark and Light mode of course, 
-    ask to the user the time he wants in the countdown, loggin with github account, 
-    salve the progress in the cookies, responsiveness.
-  </h5> -->
+    I made E2E tests with cypress.
+  </h5>
 </div>
 
 # Tabela de conteúdos
@@ -25,31 +23,45 @@
 <!--ts-->
 
 - [About](#about)
-- [How to run](#how-to-run)
+- [Final application](#application)
   - [Requirements](#requirements)
 - [Tecnologies](#technologies)
 <!--te-->
 
 ## Getting Started
 
-<!-- <div id='hot-to-run'>
-  <h2>Check the Final Application Here:</h2>
-  ()
-</div> -->
-
 <div id='technologies'>
   <h2>This application is being built using the following technologies:</h2>
   
   - [React](https://pt-br.reactjs.org/)
   - [TypeScript](https://www.typescriptlang.org/)
+  - [Styled-Components](https://styled-components.com/)
+  - [Phosphor-icons](https://phosphoricons.com/)
+  - [Cypress](https://docs.cypress.io/)
 </div>
 
 <div id='features'>
   <h2>Features</h2>
   
     - [x] Inicia/Abandona ciclo de exercicio
-    - [ ] Persiste informaçoes através de localStorage
-    - [] Dark Mode
+    - [x] Persiste informaçoes através de localStorage
+    - [x] Dark/Light Mode
+</div>
+
+<div id='aprendizados'>
+  <h2>Aprendizados</h2>
+  
+    - light e dark mode com styled-components
+    - persistir informaçoes no localStorage
+    - utlizar o hook useReducer
+    - criar um contexto para compartilhar informações pela aplicação
+    - testes E2E com cypress
+</div>
+
+<div id='application'>
+  <h2>You can see the final application here: </h2>
+  
+  - [Ignite Timer](https://ignite-timer-flv-pa6g-5n9v5jmmq-flvsantos15.vercel.app/)
 </div>
 
 <div id='author'>

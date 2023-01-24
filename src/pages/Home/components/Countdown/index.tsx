@@ -1,7 +1,9 @@
+/* eslint-disable prettier/prettier */
 import { differenceInSeconds } from 'date-fns'
 import { useEffect } from 'react'
 
 import { useCycles } from '../../../../context/useCountdown'
+import { useThemeConfig } from '../../../../context/useTheme'
 
 import { CountdownContainer, Separator } from './styles'
 
@@ -10,8 +12,9 @@ export function Countdown() {
     activeCycle,
     markCycleAsFinishedAsFinished,
     amountSecondsPassed,
-    getAmountSecondsPassed,
+    getAmountSecondsPassed
   } = useCycles()
+  const { themeConfig } = useThemeConfig()
 
   // total de segundos
   const totalSeconds = activeCycle ? activeCycle.minutesAmount * 60 : 0
@@ -35,7 +38,7 @@ export function Countdown() {
       interval = setInterval(() => {
         const secondsDifference = differenceInSeconds(
           new Date(),
-          new Date(activeCycle.startDate),
+          new Date(activeCycle.startDate)
         )
 
         if (secondsDifference >= totalSeconds) {
@@ -55,7 +58,7 @@ export function Countdown() {
     activeCycle,
     totalSeconds,
     markCycleAsFinishedAsFinished,
-    getAmountSecondsPassed,
+    getAmountSecondsPassed
   ])
 
   useEffect(() => {
@@ -65,7 +68,7 @@ export function Countdown() {
   }, [minutes, seconds, activeCycle])
 
   return (
-    <CountdownContainer>
+    <CountdownContainer defaultTheme={themeConfig}>
       <span>{minutes[0]}</span>
       <span>{minutes[1]}</span>
       <Separator>:</Separator>

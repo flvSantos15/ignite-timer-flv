@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 export const defaultTheme = {
   white: '#FFF',
 
@@ -17,5 +18,9 @@ export const defaultTheme = {
   'red-500': '#AB222E',
   'red-700': '#7A1921',
 
-  'yellow-500': '#FBA94C',
+  'yellow-500': '#FBA94C'
 }
+
+// export const lightTheme = {
+
+// }

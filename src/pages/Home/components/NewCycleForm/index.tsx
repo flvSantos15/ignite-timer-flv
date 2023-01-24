@@ -1,14 +1,17 @@
+/* eslint-disable prettier/prettier */
 import { FormContainer, MinutesAmountInput, TaskInput } from './styles'
 
 import { useFormContext } from 'react-hook-form'
 import { useCycles } from '../../../../context/useCountdown'
+import { useThemeConfig } from '../../../../context/useTheme'
 
 export function NewCycleForm() {
   const { activeCycle } = useCycles()
   const { register } = useFormContext()
+  const { themeConfig } = useThemeConfig()
 
   return (
-    <FormContainer>
+    <FormContainer defaultTheme={themeConfig}>
       <label htmlFor="task">Vou trabalhar em</label>
       <TaskInput
         id="task"
@@ -26,22 +29,24 @@ export function NewCycleForm() {
         <option value="Projeto 3" />
       </datalist>
 
-      <label htmlFor="minutesAmount">durante</label>
-      <MinutesAmountInput
-        type="number"
-        id="minutesAmount"
-        data-cy="minutesAmount"
-        placeholder="00"
-        step={5}
-        min={1}
-        max={60}
-        disabled={!!activeCycle}
-        {...register('minutesAmount', {
-          valueAsNumber: true,
-        })}
-      />
+      <div>
+        <label htmlFor="minutesAmount">durante</label>
+        <MinutesAmountInput
+          type="number"
+          id="minutesAmount"
+          data-cy="minutesAmount"
+          placeholder="00"
+          step={5}
+          min={1}
+          max={60}
+          disabled={!!activeCycle}
+          {...register('minutesAmount', {
+            valueAsNumber: true
+          })}
+        />
 
-      <span>minutos.</span>
+        <span>minutos.</span>
+      </div>
     </FormContainer>
   )
 }
