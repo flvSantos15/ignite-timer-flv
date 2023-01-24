@@ -16,6 +16,11 @@ export const HomeContainer = styled.main`
     align-items: center;
     gap: 3.5rem;
   }
+
+  @media (max-width: 700px) {
+    padding: 0;
+    border: 1px solid red;
+  }
 `
 
 export const BaseCountDownButton = styled.button`

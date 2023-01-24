@@ -28,7 +28,7 @@ export const CountdownContainer = styled.div<ICountdownContainer>`
   @media (max-width: 650px) {
     width: 100%;
     padding: 10px 0;
-    font-size: 6rem;
+    font-size: 4rem;
     line-height: 4rem;
     gap: 0.5rem;
 

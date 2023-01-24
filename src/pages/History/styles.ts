@@ -18,6 +18,10 @@ export const HistoryContainer = styled.div<IHistoryContainer>`
         ? props.theme['gray-100']
         : props.theme['gray-600']};
   }
+
+  @media (max-width: 700px) {
+    padding: 0;
+  }
 `
 
 export const HistoryList = styled.div<IHistoryContainer>`
@@ -54,6 +58,10 @@ export const HistoryList = styled.div<IHistoryContainer>`
         border-top-right-radius: 8px;
         padding-right: 1.5rem;
       }
+
+      @media (max-width: 700px) {
+        padding: 0.5rem;
+      }
     }
 
     td {
@@ -77,6 +85,10 @@ export const HistoryList = styled.div<IHistoryContainer>`
 
       &:last-child {
         padding-right: 1.5rem;
+      }
+
+      @media (max-width: 700px) {
+        padding: 0.5rem;
       }
     }
   }
