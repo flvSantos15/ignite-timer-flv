@@ -59,7 +59,7 @@ export const HistoryList = styled.div<IHistoryContainer>`
         padding-right: 1.5rem;
       }
 
-      @media (max-width: 700px) {
+      @media (max-width: 650px) {
         padding: 0.5rem;
       }
     }

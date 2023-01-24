@@ -20,7 +20,7 @@ export const LayoutContainer = styled.div<ILayoutContainer>`
   display: flex;
   flex-direction: column;
 
-  @media (max-width: 700px) {
+  @media (max-width: 650px) {
     width: 90%;
     padding: 0.5rem;
   }

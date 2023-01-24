@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const HomeContainer = styled.main`
   /* height: 100%; */
-  /* flex: 1; */
+  flex: 1;
 
   display: flex;
   flex-direction: column;
@@ -17,9 +17,8 @@ export const HomeContainer = styled.main`
     gap: 3.5rem;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 650px) {
     padding: 0;
-    border: 1px solid red;
   }
 `
 
@@ -45,7 +44,7 @@ export const BaseCountDownButton = styled.button`
     cursor: not-allowed;
   }
 
-  @media (max-width: 700px) {
+  @media (max-width: 650px) {
     width: 100%;
   }
 `

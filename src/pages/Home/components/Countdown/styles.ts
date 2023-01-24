@@ -26,9 +26,10 @@ export const CountdownContainer = styled.div<ICountdownContainer>`
   }
 
   @media (max-width: 650px) {
+    align-items: center;
     width: 100%;
     padding: 10px 0;
-    font-size: 4rem;
+    font-size: 5rem;
     line-height: 4rem;
     gap: 0.5rem;
 
