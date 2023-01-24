@@ -12,7 +12,9 @@ export function NewCycleForm() {
 
   return (
     <FormContainer defaultTheme={themeConfig}>
-      <label htmlFor="task">Vou trabalhar em</label>
+      <label htmlFor="task" id="taskLabel">
+        Vou trabalhar em
+      </label>
       <TaskInput
         id="task"
         data-cy="task"
