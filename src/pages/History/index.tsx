@@ -1,15 +1,82 @@
 /* eslint-disable prettier/prettier */
-import formatDistanceToNow from 'date-fns/formatDistanceToNow'
-import ptBR from 'date-fns/locale/pt-BR'
+import { formatDistanceToNow } from "date-fns";
+import ptBR from "date-fns/locale/pt-BR";
 
-import { useCycles } from '../../context/useCountdown'
-import { useThemeConfig } from '../../context/useTheme'
+import { useCycles } from "../../context/useCountdown";
+import { useThemeConfig } from "../../context/useTheme";
 
-import { HistoryContainer, HistoryList, Status } from './styles'
+import { HistoryContainer, HistoryList, Status } from "./styles";
+
+const cycles = [
+  {
+    id: 1,
+    task: "Tarefa",
+    minutesAmount: 25,
+    startDate: new Date(2023, 0, 20),
+    interruptedDate: new Date(2023, 0, 21),
+    finishedDate: new Date(2023, 0, 22),
+  },
+  {
+    id: 2,
+    task: "Tarefa",
+    minutesAmount: 25,
+    startDate: new Date(2023, 0, 20),
+    interruptedDate: new Date(2023, 0, 21),
+    finishedDate: new Date(2023, 0, 22),
+  },
+  {
+    id: 3,
+    task: "Tarefa",
+    minutesAmount: 25,
+    startDate: new Date(2023, 0, 20),
+    interruptedDate: new Date(2023, 0, 21),
+    finishedDate: new Date(2023, 0, 22),
+  },
+  {
+    id: 4,
+    task: "Tarefa",
+    minutesAmount: 25,
+    startDate: new Date(2023, 0, 20),
+    interruptedDate: new Date(2023, 0, 21),
+    finishedDate: new Date(2023, 0, 22),
+  },
+  {
+    id: 5,
+    task: "Tarefa",
+    minutesAmount: 25,
+    startDate: new Date(2023, 0, 20),
+    interruptedDate: new Date(2023, 0, 21),
+    finishedDate: new Date(2023, 0, 22),
+  },
+  {
+    id: 6,
+    task: "Tarefa",
+    minutesAmount: 25,
+    startDate: new Date(2023, 0, 20),
+    interruptedDate: new Date(2023, 0, 21),
+    finishedDate: new Date(2023, 0, 22),
+  },
+  {
+    id: 7,
+    task: "Tarefa",
+    minutesAmount: 25,
+    startDate: new Date(2023, 0, 20),
+    interruptedDate: new Date(2023, 0, 21),
+    finishedDate: new Date(2023, 0, 22),
+  },
+  {
+    id: 8,
+    task: "Tarefa",
+    minutesAmount: 25,
+    startDate: new Date(2023, 0, 20),
+    interruptedDate: new Date(2023, 0, 21),
+    finishedDate: new Date(2023, 0, 22),
+  },
+];
 
 export function History() {
-  const { cycles } = useCycles()
-  const { themeConfig } = useThemeConfig()
+  // const { cycles } = useCycles();
+  const { themeConfig } = useThemeConfig();
 
   return (
     <HistoryContainer defaultTheme={themeConfig}>
@@ -36,7 +103,7 @@ export function History() {
                       <td>
                         {formatDistanceToNow(new Date(cycle.startDate), {
                           addSuffix: true,
-                          locale: ptBR
+                          locale: ptBR,
                         })}
                       </td>
                       <td>
@@ -53,7 +120,7 @@ export function History() {
                         )}
                       </td>
                     </tr>
-                  )
+                  );
                 })}
               </>
             )}
@@ -61,5 +128,5 @@ export function History() {
         </table>
       </HistoryList>
     </HistoryContainer>
-  )
+  );
 }
