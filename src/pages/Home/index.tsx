@@ -1,51 +1,51 @@
 /* eslint-disable prettier/prettier */
-import { HandPalm, Play } from 'phosphor-react'
-import { useCycles } from '../../context/useCountdown'
+import { HandPalm, Play } from "phosphor-react";
+import { useCycles } from "../../context/useCountdown";
 
-import { zodResolver } from '@hookform/resolvers/zod'
-import { FormProvider, useForm } from 'react-hook-form'
-import * as zod from 'zod'
+import { zodResolver } from "@hookform/resolvers/zod";
+import { FormProvider, useForm } from "react-hook-form";
+import * as zod from "zod";
 
-import { Countdown } from './components/Countdown'
-import { NewCycleForm } from './components/NewCycleForm'
+import { Countdown } from "./components/Countdown";
+import { NewCycleForm } from "./components/NewCycleForm";
 
 import {
   HomeContainer,
   StartCountDownButton,
   // eslint-disable-next-line prettier/prettier
-  StopCountDownButton
-} from './styles'
+  StopCountDownButton,
+} from "./styles";
 
 const newCycleFormValidationsSchema = zod.object({
-  task: zod.string().min(1, 'Informe a tarefa'),
+  task: zod.string().min(1, "Informe a tarefa"),
   minutesAmount: zod
     .number()
-    .min(1, 'O ciclo precisa ser de no mínimo 5 mínutos')
-    .max(60, 'O ciclo precisa ser de no máximo 60 mínutos')
-})
+    .min(1, "O ciclo precisa ser de no mínimo 5 mínutos")
+    .max(60, "O ciclo precisa ser de no máximo 60 mínutos"),
+});
 
-type NewCycleFormData = zod.infer<typeof newCycleFormValidationsSchema>
+type NewCycleFormData = zod.infer<typeof newCycleFormValidationsSchema>;
 
 export function Home() {
-  const { createNewCycle, interruptCurrentCycle, activeCycle } = useCycles()
+  const { createNewCycle, interruptCurrentCycle, activeCycle } = useCycles();
 
   const newCycleForm = useForm<NewCycleFormData>({
     resolver: zodResolver(newCycleFormValidationsSchema),
     defaultValues: {
-      task: '',
-      minutesAmount: 0
-    }
-  })
+      task: "",
+      minutesAmount: 0,
+    },
+  });
 
-  const { reset, watch, handleSubmit } = newCycleForm
+  const { reset, watch, handleSubmit } = newCycleForm;
 
-  const task = watch('task')
-  const isSubmitDisabled = !task
+  const task = watch("task");
+  const isSubmitDisabled = !task;
 
   const handleCreateNewCycle = (data: NewCycleFormData) => {
-    createNewCycle(data)
-    reset()
-  }
+    createNewCycle(data);
+    reset();
+  };
 
   return (
     <HomeContainer>
@@ -53,6 +53,14 @@ export function Home() {
         <FormProvider {...newCycleForm}>
           <NewCycleForm />
         </FormProvider>
+
+        <div className="activeCycle">
+          {activeCycle && (
+            <p>
+              Em andamento: <strong>{activeCycle.task}</strong>
+            </p>
+          )}
+        </div>
 
         <Countdown />
 
@@ -69,5 +77,5 @@ export function Home() {
         )}
       </form>
     </HomeContainer>
-  )
+  );
 }

@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import styled from 'styled-components'
+import styled from "styled-components";
 
 export const HomeContainer = styled.main`
   /* height: 100%; */
@@ -14,13 +14,18 @@ export const HomeContainer = styled.main`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 3.5rem;
+    // gap: 3.5rem;
+    gap: 1.5rem;
+
+    div.activeCycle {
+      height: 25px;
+    }
   }
 
   @media (max-width: 650px) {
     padding: 0;
   }
-`
+`;
 
 export const BaseCountDownButton = styled.button`
   width: 100%;
@@ -32,7 +37,7 @@ export const BaseCountDownButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  color: ${(props) => props.theme['gray-100']};
+  color: ${(props) => props.theme["gray-100"]};
 
   gap: 0.5rem;
   font-weight: bold;
@@ -47,20 +52,20 @@ export const BaseCountDownButton = styled.button`
   @media (max-width: 650px) {
     width: 100%;
   }
-`
+`;
 
 export const StartCountDownButton = styled(BaseCountDownButton)`
-  background: ${(props) => props.theme['green-500']};
+  background: ${(props) => props.theme["green-500"]};
 
   &:not(:disabled):hover {
-    background: ${(props) => props.theme['green-700']};
+    background: ${(props) => props.theme["green-700"]};
   }
-`
+`;
 
 export const StopCountDownButton = styled(BaseCountDownButton)`
-  background: ${(props) => props.theme['red-500']};
+  background: ${(props) => props.theme["red-500"]};
 
   &:not(:disabled):hover {
-    background: ${(props) => props.theme['red-700']};
+    background: ${(props) => props.theme["red-700"]};
   }
-`
+`;
